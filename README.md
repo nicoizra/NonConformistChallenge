@@ -1,14 +1,47 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🧑‍💻 [React Native Coding Challange](https://docs.google.com/document/d/1E8Q8zhz7OBFrjrcuYERNfEdnBEUhimoQZS-kz2qGESE/edit) - Non Conformist
 
-# Getting Started
+Aplicación para sacar y listar fotos con ubicacion - Posibilidad de compartirlas.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Tabla de Contenidos
 
-## Step 1: Start the Metro Server
+1. [Instalación](#instalación)
+2. [Uso](#uso)
+3. [Decisiones de Diseño](#decisiones-de-diseño)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Instalación
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### Requisitos previos
+
+Se debe tener instalado lo siguiente en tu sistema:
+
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
+- Emulador para Android/iOS
+
+### Configuración del entorno
+
+Sigue las instrucciones de [Configuración del Entorno de React Native](https://reactnative.dev/docs/environment-setup) para asegurarte de que tu entorno esté configurado correctamente.
+
+### Instalación de dependencias
+
+Clona el repositorio y luego instala las dependencias:
+
+#### Paso 1: Clonar el repositorio e instalar las dependencias
+
+```bash
+git clone https://github.com/nicoizra/NonConformistChallenge.git
+```
+
+```bash
+# npm
+npm install && cd ios && pod install && cd ..
+
+# Yarn
+yarn install && cd ios && pod install && cd ..
+```
+
+#### Paso 2: Correr el Metro Server
 
 ```bash
 # using npm
@@ -18,62 +51,40 @@ npm start
 yarn start
 ```
 
-## Step 2: Start your Application
+#### Step 3: Correr la App
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+#### Android
 
 ```bash
-# using npm
+# npm
 npm run android
 
-# OR using Yarn
+# Yarn
 yarn android
 ```
 
-### For iOS
+#### iOS
 
 ```bash
-# using npm
+# npm
 npm run ios
 
-# OR using Yarn
+# Yarn
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+> Tras ejecutar estos comandos, la App debería mostrarse en el emulador sin problemas. Para ejecutarlo en iOS, en el package.json se puede modificar el script "ios", para elegir el emulador sobre el que se va a ejecutar.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Uso
 
-## Step 3: Modifying your App
+La idea principal es una aplicación en donde uno entra y ve un listado de fotos que sacó (No se solicitó persistencia). Puede entrar a cada foto para ver su ubicación o para compartirla.
 
-Now that you have successfully run the app, let's modify it.
+## Decisiones de Diseño
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Desarrollé componentes reutilizables y los hice lo más atómicos posibles para poder generar un código más cohesivo y mantenible (SOLID: Single Responsibility).
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+En cuanto a los estilos, utilicé un Theme que provee react-navigation para aprovechar su esquema, y fui modificando los estilos según necesite. Los componentes los estilé con StyleSheet.
 
-## Congratulations! :tada:
+El estado global de la aplicación - aunque fuese chico y simple - lo manejé con Context ya que me parece la herramienta más cómoda para la funcionalidad. De este modo, dispuse de un Provider para manejar las listas de fotos.
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+El código está tipado con TypeScript para generar una mayor legibilidad y que sea más simple de entender/mantener.

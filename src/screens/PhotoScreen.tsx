@@ -1,22 +1,14 @@
 import React from 'react';
-import { View, Image, Text, SafeAreaView } from 'react-native';
-import Share from 'react-native-share';
+import { View, Image, SafeAreaView } from 'react-native';
 import { styles } from '../styles/global';
 import BackButton from '../components/BackButton';
 import Button from '../components/Button';
 import { theme } from '../theme';
 import CustomText from '../components/CustomText';
+import { sharePhoto } from '../helpers/sharePhoto';
 
-const PhotoScreen = ({ route, navigation }) => {
+const PhotoScreen = ({ route }) => {
   const { photo } = route.params;
-
-  const sharePhoto = async (uri: string) => {
-    try {
-      await Share.open({ url: uri });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <SafeAreaView style={styles.container}>

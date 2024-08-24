@@ -23,7 +23,7 @@ const Camera = () => {
   return (
     <>
       <RNCamera ref={ref} style={styles.camera} captureAudio={false} />
-      <Button title="Tomar Foto" onPress={takePhoto} />
+      <Button title="Tomar foto" onPress={takePhoto} />
     </>
   );
 };
